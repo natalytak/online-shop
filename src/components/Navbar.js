@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from '../logo.svg';
 import styled from "styled-components";
 import { ButtonContainer } from "./Button";
+import { ProductConsumer } from "../context";
 
 export default class Navbar extends Component {
     render() {
@@ -13,14 +14,35 @@ export default class Navbar extends Component {
                 </Link>
                 <ul className="navbar-nav align-items-center">
                     <li className="nav-item ml-5">
-                        <Link to="/" className="nav-link">products</Link>
+                        <Link to="/" 
+                        className="nav-link">
+                        products
+                        </Link>
                     </li>
                 </ul>
                 <Link to="/cart" className="ml-auto">
+                <ProductConsumer>
+                {(value) => {
+                    const cartItemCount = value.cartItemCount;
+                        return (
+                            <ButtonContainer>
+                                <span className="mr-2">
+                                    <i className="fa fa-cart-plus"/>
+                                </span>
+                                my cart ({cartItemCount})
+                            </ButtonContainer>
+                        )
+
+                }
+                
+                /* <Link to="/cart" className="ml-auto">
                     <ButtonContainer>
-                    <span className="mr-2"><i className="fa fa-cart-plus"/></span>
-                        my cart
-                    </ButtonContainer>
+                    <span className="mr-2">
+                        <i className="fa fa-cart-plus"/>
+                    </span>
+                    my cart ({this.props.cartItemCount})
+                    </ButtonContainer> */}
+                </ProductConsumer>
                 </Link>
             </NavWrapper>
         )
