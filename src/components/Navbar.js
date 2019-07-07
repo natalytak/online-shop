@@ -4,10 +4,12 @@ import logo from '../logo.svg';
 import styled from "styled-components";
 import { ButtonContainer } from "./Button";
 import { ProductConsumer } from "../context";
+import SearchForm from "./SearchForm"; 
 
 export default class Navbar extends Component {
     render() {
         return (
+            <ProductConsumer>
             <NavWrapper className="navbar navbar-expand-lg navbar-dark px-sm-5">
                 <Link to="/">
                     <img src={logo} alt="store" className="navbar-brand" />
@@ -20,8 +22,10 @@ export default class Navbar extends Component {
                         </Link>
                     </li>
                 </ul>
+                <SearchForm />
+                {/* <Link to="/carousel">Carousel</Link> */}
                 <Link to="/cart" className="ml-auto">
-                <ProductConsumer>
+                {/* <ProductConsumer> */}
                 {(value) => {
                     const cartItemCount = value.cartItemCount;
                         return (
@@ -42,9 +46,10 @@ export default class Navbar extends Component {
                     </span>
                     my cart ({this.props.cartItemCount})
                     </ButtonContainer> */}
-                </ProductConsumer>
+                {/* </ProductConsumer> */}
                 </Link>
             </NavWrapper>
+        </ProductConsumer>
         )
     }
 }

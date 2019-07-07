@@ -15,7 +15,8 @@ class ProductProvider extends Component {
         cartSubTotal: 0,
         cartTax: 0,
         cartTotal: 0,
-        cartItemCount: 0
+        cartItemCount: 0,
+        search: []
     };
     componentDidMount() {
         this.setProducts();
@@ -120,6 +121,10 @@ getItem = (id) => {
         }
     }
 
+    handleSearch = () => {
+        console.log("searching...");
+    }
+
     removeItem = id => {
        let tempProducts = [...this.state.products];
        let tempCart = [...this.state.cart];
@@ -181,7 +186,8 @@ getItem = (id) => {
                 decrement: this.decrement,
                 removeItem: this.removeItem,
                 clearCart: this.clearCart,
-                countItemsInCart: this.countItemsInCart
+                countItemsInCart: this.countItemsInCart,
+                handleSearch: this.handleSearch
             }}>
                 {this.props.children}
             </ProductContext.Provider>

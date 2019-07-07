@@ -9,6 +9,7 @@ import Cart from "./components/Cart";
 import Default from "./components/Default";
 import { ProductProvider } from "./context";
 import Modal from "./components/Modal";
+import Carousel from "./components/Carousel";
 
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
           <Route exact path="/" component={ProductList}></Route>
           <Route path="/details" component={Details}></Route>
           <Route path="/cart" component={Cart}></Route>
+          <Route path="/carousel" component={Carousel}></Route>
           <Route component={Default}></Route>
         </Switch>
         <Modal />
